@@ -35,5 +35,5 @@ jobs:
       - name: Attach policies to environments
         run: |
           kosli attach-policy default-policy --environment=aws-prod,aws-beta
-          kosli attach-policy temp-policy --environment=aws-prod,aws-beta
+          kosli detach-policy temp-policy --environment=aws-prod,aws-beta
           kosli attach-policy snyk-policy --environment=aws-prod,aws-beta
