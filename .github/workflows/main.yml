@@ -29,9 +29,11 @@ jobs:
       - name: Create/Update Kosli Policies
         run: |
           kosli create policy default-policy default-env-policy.yml
+          kosli create policy temp-policy temp-env-policy.yml
           kosli create policy snyk-policy snyk-env-policy.yml
 
       - name: Attach policies to environments
         run: |
           kosli attach-policy default-policy --environment=aws-prod,aws-beta
+          kosli attach-policy temp-policy --environment=aws-prod,aws-beta
           kosli attach-policy snyk-policy --environment=aws-prod,aws-beta
