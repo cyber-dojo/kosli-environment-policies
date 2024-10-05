@@ -14,7 +14,7 @@ env:
 
 jobs:
 
-  setup:
+  apply-policies-to-environments:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
