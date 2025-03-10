@@ -1,4 +1,3 @@
-# specific-attestations.yml
 _schema: https://kosli.com/schemas/policy/environment/v1
 
 artifacts:
@@ -8,4 +7,4 @@ artifacts:
   attestations:
     - name: snyk-container-scan
       type: snyk
-#      if: ${{ flow.name != "aws-prod-co-promotion-ci"  }}
+      if: ${{ flow.name != "production-co-promotion"  }}
