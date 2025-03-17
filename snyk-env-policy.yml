@@ -7,4 +7,4 @@ artifacts:
   attestations:
     - name: snyk-container-scan
       type: snyk
-      if: ${{ flow.name != "production-co-promotion"  }}
+      if: ${{ flow.name != "production-promotion"  }}
