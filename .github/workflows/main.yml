@@ -30,9 +30,6 @@ jobs:
 
       - name: Create/Update Kosli Policies
         run: |
-#           kosli create policy default-policy default-env-policy.yml
-#           kosli create policy snyk-policy    snyk-env-policy.yml
-#
           kosli create policy artifact-provenance policies/artifact-provenance.yml
           kosli create policy trail-compliance    policies/trail-compliance.yml
           kosli create policy security-scan       policies/security-scan.yml
@@ -40,10 +37,4 @@ jobs:
 
       - name: Attach policies to environments
         run: |
-#          kosli detach-policy default-policy --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-#          kosli detach-policy snyk-policy    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-#
           kosli attach-policy artifact-provenance --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-#          kosli attach-policy trail-compliance    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-#          kosli attach-policy security-scan       --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-#          kosli attach-policy pull-request        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
