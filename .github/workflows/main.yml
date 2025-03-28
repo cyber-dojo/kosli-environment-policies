@@ -43,9 +43,9 @@ jobs:
 
       - name: Create/Update Kosli Policies
         run: |
-          # kosli create policy default-policy default-env-policy.yml
-          # kosli create policy snyk-policy    snyk-env-policy.yml
-          #
+#           kosli create policy default-policy default-env-policy.yml
+#           kosli create policy snyk-policy    snyk-env-policy.yml
+#
           kosli create policy artifact-provenance policies/artifact-provenance.yml
           kosli create policy trail-compliance    policies/trail-compliance.yml
           kosli create policy security-scan       policies/security-scan.yml
