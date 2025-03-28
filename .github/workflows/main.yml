@@ -33,7 +33,6 @@ jobs:
           kosli create policy artifact-provenance policies/artifact-provenance.yml
           kosli create policy trail-compliance    policies/trail-compliance.yml
           kosli create policy security-scan       policies/security-scan.yml
-          kosli create policy pull-request        policies/pull-request.yml
 
       - name: Attach policies to environments
         run: |
