@@ -53,10 +53,10 @@ jobs:
 
       - name: Attach policies to environments
         run: |
-          #kosli detach-policy default-policy --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          #kosli detach-policy snyk-policy    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          #
+#          kosli detach-policy default-policy --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+#          kosli detach-policy snyk-policy    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+#
           kosli attach-policy artifact-provenance --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          #kosli attach-policy trail-compliance    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          #kosli attach-policy security-scan       --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          #kosli attach-policy pull-request        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+#          kosli attach-policy trail-compliance    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+#          kosli attach-policy security-scan       --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+#          kosli attach-policy pull-request        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
