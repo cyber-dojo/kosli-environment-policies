@@ -1,0 +1,9 @@
+_schema: https://kosli.com/schemas/policy/environment/v1
+
+# https://docs.kosli.com/getting_started/policies/#specific-attestations
+
+artifacts:
+  attestations:
+    - name: '*'
+      type: pull-request
+      if: ${{ flow.tags.kind == "microservice" }}
