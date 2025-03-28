@@ -28,18 +28,18 @@ jobs:
         with:
           version: ${{ vars.KOSLI_CLI_VERSION }}
 
-      - name: Tag Kosli Flows
-        run: |
-          kosli tag flow creator                --set kind=microservice
-          kosli tag flow custom-start-points    --set kind=microservice
-          kosli tag flow dashboard              --set kind=microservice
-          kosli tag flow differ                 --set kind=microservice
-          kosli tag flow exercises-start-points --set kind=microservice
-          kosli tag flow languages-start-points --set kind=microservice
-          kosli tag flow nginx                  --set kind=microservice
-          kosli tag flow runner                 --set kind=microservice
-          kosli tag flow saver                  --set kind=microservice
-          kosli tag flow web                    --set kind=microservice
+#      - name: Tag Kosli Flows
+#        run: |
+#          kosli tag flow creator-ci                --set kind=microservice
+#          kosli tag flow custom-start-points-ci    --set kind=microservice
+#          kosli tag flow dashboard-ci              --set kind=microservice
+#          kosli tag flow differ-ci                 --set kind=microservice
+#          kosli tag flow exercises-start-points-ci --set kind=microservice
+#          kosli tag flow languages-start-points-ci --set kind=microservice
+#          kosli tag flow nginx-ci                  --set kind=microservice
+#          kosli tag flow runner-ci                 --set kind=microservice
+#          kosli tag flow saver-ci                  --set kind=microservice
+#          kosli tag flow web-ci                    --set kind=microservice
 
       - name: Create/Update Kosli Policies
         run: |
