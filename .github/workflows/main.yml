@@ -28,12 +28,31 @@ jobs:
         with:
           version: ${{ vars.KOSLI_CLI_VERSION }}
 
+      - name: Tag Kosli Flows
+        run: |
+          kosli tag flow creator-ci                --set kind=microservice
+          kosli tag flow custom-start-points-ci    --set kind=microservice
+          kosli tag flow dashboard-ci              --set kind=microservice
+          kosli tag flow differ-ci                 --set kind=microservice
+          kosli tag flow exercises-start-points-ci --set kind=microservice
+          kosli tag flow languages-start-points-ci --set kind=microservice
+          kosli tag flow nginx-ci                  --set kind=microservice
+          kosli tag flow runner-ci                 --set kind=microservice
+          kosli tag flow saver-ci                  --set kind=microservice
+          kosli tag flow web-ci                    --set kind=microservice
+
       - name: Create/Update Kosli Policies
         run: |
           kosli create policy artifact-provenance policies/artifact-provenance.yml
           kosli create policy trail-compliance    policies/trail-compliance.yml
           kosli create policy security-scan       policies/security-scan.yml
+          kosli create policy pull-request        policies/pull-request.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy artifact-provenance --environment=aws-beta
+          kosli attach-policy artifact-provenance --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+          kosli attach-policy trail-compliance    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+          kosli attach-policy security-scan       --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+          kosli attach-policy pull-request        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+          kosli detach-policy default-policy --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+          kosli detach-policy snyk-policy    --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
