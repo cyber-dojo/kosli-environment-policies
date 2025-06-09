@@ -54,5 +54,3 @@ jobs:
           kosli attach-policy build-process        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy security-scan        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy pull-request         --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          
-          kosli detach-policy trail-compliance     --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
