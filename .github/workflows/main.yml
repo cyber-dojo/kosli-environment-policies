@@ -46,7 +46,6 @@ jobs:
 
       - name: Tag Kosli Flows
         run: |
-          kosli tag flow creator-ci                --set kind=microservice
           kosli tag flow custom-start-points-ci    --set kind=microservice
           kosli tag flow dashboard-ci              --set kind=microservice
           kosli tag flow differ-ci                 --set kind=microservice
@@ -56,3 +55,4 @@ jobs:
           kosli tag flow runner-ci                 --set kind=microservice
           kosli tag flow saver-ci                  --set kind=microservice
           kosli tag flow web-ci                    --set kind=microservice
+          kosli tag flow creator-ci                --set kind=microservice
