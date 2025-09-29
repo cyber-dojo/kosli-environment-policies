@@ -39,9 +39,11 @@ jobs:
         run: |
           kosli attach-policy artifact-provenance  --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy build-process        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          kosli attach-policy security-scan        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy pull-request         --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-      
+          kosli attach-policy security-scan        --environment="${KOSLI_AWS_PROD}"
+          # One time detachment
+          kosli detach-policy security-scan        --environment="${KOSLI_AWS_BETA}"
+
       - name: Tag Kosli Flows
         run: |
           kosli tag flow creator-ci                --set kind=microservice
