@@ -41,16 +41,3 @@ jobs:
           kosli attach-policy build-process        --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy pull-request         --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy security-scan        --environment="${KOSLI_AWS_PROD}"
-
-      - name: Tag Kosli Flows
-        run: |
-          kosli tag flow custom-start-points-ci    --set kind=microservice
-          kosli tag flow dashboard-ci              --set kind=microservice
-          kosli tag flow differ-ci                 --set kind=microservice
-          kosli tag flow exercises-start-points-ci --set kind=microservice
-          kosli tag flow languages-start-points-ci --set kind=microservice
-          kosli tag flow nginx-ci                  --set kind=microservice
-          kosli tag flow runner-ci                 --set kind=microservice
-          kosli tag flow saver-ci                  --set kind=microservice
-          kosli tag flow web-ci                    --set kind=microservice
-          kosli tag flow creator-ci                --set kind=microservice
