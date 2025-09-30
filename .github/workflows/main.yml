@@ -6,11 +6,11 @@ on:
       - main
 
 env:
-  KOSLI_API_TOKEN: ${{ secrets.KOSLI_API_TOKEN }}
-  KOSLI_DRY_RUN:   ${{ vars.KOSLI_DRY_RUN }}           # true/false
-  KOSLI_DEBUG:     ${{ vars.KOSLI_DEBUG }}             # true/false
-  KOSLI_HOST:      ${{ vars.KOSLI_HOST }}              # https://app.kosli.com
   KOSLI_ORG:       ${{ vars.KOSLI_ORG }}               # cyber-dojo
+  KOSLI_HOST:      ${{ vars.KOSLI_HOST }}              # https://app.kosli.com
+  KOSLI_API_TOKEN: ${{ secrets.KOSLI_API_TOKEN }}
+  KOSLI_DRY_RUN:   ${{ vars.KOSLI_DRY_RUN }}           # false
+  KOSLI_DEBUG:     ${{ vars.KOSLI_DEBUG }}             # false
   KOSLI_AWS_BETA:  aws-beta
   KOSLI_AWS_PROD:  aws-prod
 
