@@ -4,6 +4,6 @@ _schema: https://kosli.com/schemas/policy/environment/v1
 
 artifacts:
   attestations:
-    - name: '*'
+    - if: ${{ flow.tags.kind == "build" }}
+      name: '*'
       type: pull_request
-      if: ${{ flow.tags.kind == "microservice" }}
