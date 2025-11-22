@@ -5,3 +5,8 @@ _schema: https://kosli.com/schemas/policy/environment/v1
 artifacts:
   trail-compliance:
     required: true
+    if: ${{ flow.tags.kind == "build" }}
+  attestations:
+    - name: '*'
+      type: snyk
+      if: ${{ flow.tags.kind == "build" }}
