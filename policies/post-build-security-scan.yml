@@ -6,4 +6,4 @@ artifacts:
   attestations:
     - name: '*'
       type: snyk
-      if: ${{ flow.tags.kind != "build" }}
+      if: ${{ flow.name == "aws-snyk-scan" }}

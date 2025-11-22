@@ -41,7 +41,3 @@ jobs:
           kosli attach-policy build-process            --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy pull-request             --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
           kosli attach-policy post-build-security-scan --environment="${KOSLI_AWS_PROD}"
-
-      - name: Detach policies from environments
-        run: |
-          kosli detach-policy security-scan        --environment="${KOSLI_AWS_PROD}"
