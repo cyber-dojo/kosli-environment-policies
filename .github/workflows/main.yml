@@ -30,16 +30,14 @@ jobs:
 
       - name: Detach policies from environments
         run: |
-          kosli detach-policy pull-request --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
+          kosli detach-policy artifact-provenance --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
 
       - name: Create/Update Kosli Policies
         run: |
-          kosli create policy artifact-provenance      policies/artifact-provenance.yml
           kosli create policy build-process            policies/build-process.yml
           kosli create policy post-build-security-scan policies/post-build-security-scan.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy artifact-provenance      --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          kosli attach-policy build-process            --environment="${KOSLI_AWS_PROD},${KOSLI_AWS_BETA}"
-          kosli attach-policy post-build-security-scan --environment="${KOSLI_AWS_PROD}"
+          kosli attach-policy build-process            --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy post-build-security-scan --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
