@@ -17,7 +17,3 @@ artifacts:
     - if: ${{ flow.tags.kind == "build" }}
       name: '*'
       type: pull_request
-
-    - if: ${{ flow.tags.kind == "build" }}
-      name: '*'
-      type: snyk
