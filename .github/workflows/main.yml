@@ -40,6 +40,6 @@ jobs:
           kosli attach-policy live-snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
           kosli attach-policy live-snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
 
-      - name: Detach policies from environments
-        run: |
-          kosli detach-policy post-build-security-scan --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+      # - name: Detach policies from environments
+      #   run: |
+      #     kosli detach-policy NAME --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
