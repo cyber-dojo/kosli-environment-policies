@@ -1,0 +1,9 @@
+_schema: https://kosli.com/schemas/policy/environment/v1
+
+# https://docs.kosli.com/getting_started/policies/
+
+artifacts:
+  attestations:
+    - if: ${{ flow.name == "aws-beta-new-snyk-vulns" }}
+      name: '*'
+      type: custom:single-snyk-vuln

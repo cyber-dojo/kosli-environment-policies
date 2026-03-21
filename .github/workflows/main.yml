@@ -31,13 +31,15 @@ jobs:
       - name: Create/Update Kosli Policies
         run: |
           kosli create policy build-process            policies/build-process.yml
-          kosli create policy post-build-security-scan policies/post-build-security-scan.yml
+          kosli create policy live-snyk-scan-aws-beta policies/live-snyk-scan-aws-beta.yml
+          kosli create policy live-snyk-scan-aws-prod policies/live-snyk-scan-aws-prod.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy build-process            --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
-          kosli attach-policy post-build-security-scan --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy build-process           --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy live-snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
+          kosli attach-policy live-snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
 
-      # - name: Detach policies from environments
-      #   run: |
-      #     kosli detach-policy NAME --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+      - name: Detach policies from environments
+        run: |
+          kosli detach-policy post-build-security-scan --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"

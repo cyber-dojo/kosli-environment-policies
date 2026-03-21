@@ -4,6 +4,6 @@ _schema: https://kosli.com/schemas/policy/environment/v1
 
 artifacts:
   attestations:
-    - if: ${{ flow.name == "aws-snyk-scan" }}
+    - if: ${{ flow.name == "aws-prod-new-snyk-vulns" }}
       name: '*'
-      type: snyk
+      type: custom:single-snyk-vuln
