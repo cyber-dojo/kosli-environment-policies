@@ -28,18 +28,19 @@ jobs:
         with:
           version: ${{ vars.KOSLI_CLI_VERSION }}
 
+      - name: Detach policies from environments
+        run: |
+          kosli detach-policy live-snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
+          kosli detach-policy live-snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
+
       - name: Create/Update Kosli Policies
         run: |
-          kosli create policy build-process            policies/build-process.yml
-          kosli create policy live-snyk-scan-aws-beta policies/live-snyk-scan-aws-beta.yml
-          kosli create policy live-snyk-scan-aws-prod policies/live-snyk-scan-aws-prod.yml
+          kosli create policy build-process      policies/build-process.yml
+          kosli create policy snyk-scan-aws-beta policies/snyk-scan-aws-beta.yml
+          kosli create policy snyk-scan-aws-prod policies/snyk-scan-aws-prod.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy build-process           --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
-          kosli attach-policy live-snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
-          kosli attach-policy live-snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
-
-      # - name: Detach policies from environments
-      #   run: |
-      #     kosli detach-policy NAME --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy build-process      --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
+          kosli attach-policy snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
