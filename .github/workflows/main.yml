@@ -35,12 +35,14 @@ jobs:
 
       - name: Create/Update Kosli Policies
         run: |
-          kosli create policy build-process      policies/build-process.yml
-          kosli create policy snyk-scan-aws-beta policies/snyk-scan-aws-beta.yml
-          kosli create policy snyk-scan-aws-prod policies/snyk-scan-aws-prod.yml
+          kosli create policy build-process        policies/build-process.yml
+          kosli create policy snyk-scan-aws-beta   policies/snyk-scan-aws-beta.yml
+          kosli create policy snyk-scan-aws-prod   policies/snyk-scan-aws-prod.yml
+          # kosli create policy production-promotion policies/production-promotion.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy build-process      --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
-          kosli attach-policy snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
-          kosli attach-policy snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
+          kosli attach-policy build-process        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy snyk-scan-aws-beta   --environment="${KOSLI_AWS_BETA}"
+          kosli attach-policy snyk-scan-aws-prod   --environment="${KOSLI_AWS_PROD}"
+          # kosli attach-policy production-promotion --environment="${KOSLI_AWS_PROD}"

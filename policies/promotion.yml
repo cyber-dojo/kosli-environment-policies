@@ -2,6 +2,6 @@ _schema: https://kosli.com/schemas/policy/environment/v1
 
 artifacts:
   attestations:
-    - if: ${{ flow.name == "snyk-aws-beta-per-artifact" }}
-      name: snyk-container-scan
+    - if: ${{ flow.name == "production-promotion" }}
+      name: snyk-scan
       type: generic

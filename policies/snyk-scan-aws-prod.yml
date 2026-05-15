@@ -1,9 +1,7 @@
 _schema: https://kosli.com/schemas/policy/environment/v1
 
-# https://docs.kosli.com/getting_started/policies/
-
 artifacts:
   attestations:
-    - if: ${{ flow.name == "snyk-vulns-aws-prod" }}
+    - if: ${{ flow.name == "snyk-aws-prod-per-artifact" }}
       name: snyk-container-scan
       type: generic
