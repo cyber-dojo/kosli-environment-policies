@@ -1,12 +1,6 @@
 _schema: https://kosli.com/schemas/policy/environment/v1
 
 artifacts:
-  provenance:
-    required: true
-      
-  trail-compliance:
-    required: true
-
   attestations:
     - if: ${{ flow.tags.kind == "build" }}
       name: '*'

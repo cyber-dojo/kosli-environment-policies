@@ -32,17 +32,23 @@ jobs:
         run: |
           kosli detach-policy live-snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
           kosli detach-policy live-snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
+          kosli detach-policy build-process           --environment="${KOSLI_AWS_BETA}"
+          kosli detach-policy build-process           --environment="${KOSLI_AWS_PROD}"
 
       - name: Create/Update Kosli Policies
         run: |
-          kosli create policy build-process        policies/build-process.yml
+          kosli create policy provenance           policies/provenance.yml
+          kosli create policy pull-request         policies/pull-request.yml
+          kosli create policy trail-compliance     policies/trail-compliance.yml
           kosli create policy snyk-scan-aws-beta   policies/snyk-scan-aws-beta.yml
           kosli create policy snyk-scan-aws-prod   policies/snyk-scan-aws-prod.yml
-          # kosli create policy production-promotion policies/production-promotion.yml
+          kosli create policy production-promotion policies/production-promotion.yml
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy build-process        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy pull-request      --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy trail-compliance  --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
           kosli attach-policy snyk-scan-aws-beta   --environment="${KOSLI_AWS_BETA}"
           kosli attach-policy snyk-scan-aws-prod   --environment="${KOSLI_AWS_PROD}"
-          # kosli attach-policy production-promotion --environment="${KOSLI_AWS_PROD}"
+          kosli attach-policy production-promotion --environment="${KOSLI_AWS_PROD}"
