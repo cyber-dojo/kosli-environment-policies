@@ -4,7 +4,6 @@ artifacts:
   trail-compliance:
     required: true
     exceptions:
-      # Waive trails whose flow targets a different environment (tagged env=<other>).
-      # The exists() guard means a flow with no env tag is NOT waived, so it stays
-      # required (fail closed). See snyk-scanning/docs/policy-exception-scoping-asymmetry.md
+      # Waive trails whose flow targets a different environment.
+      # The exists() guard means a flow with no env tag is NOT waived.
       - if: ${{ exists(flow.tags.env) and flow.tags.env != "aws-beta" }}
