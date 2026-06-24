@@ -4,4 +4,4 @@ artifacts:
   attestations:
     - if: ${{ flow.name == "production-promotion" }}
       name: snyk-scan
-      type: generic
+      type: decision
