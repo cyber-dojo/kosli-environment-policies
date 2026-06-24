@@ -4,4 +4,4 @@ artifacts:
   attestations:
     - if: ${{ flow.name == "snyk-aws-beta-per-artifact" }}
       name: snyk-container-scan
-      type: generic
+      type: decision
