@@ -5,3 +5,4 @@ artifacts:
     - if: ${{ flow.name == "snyk-aws-prod-per-artifact" }}
       name: snyk-container-scan
       type: decision
+      for_control: SDLC-CTRL-0022
