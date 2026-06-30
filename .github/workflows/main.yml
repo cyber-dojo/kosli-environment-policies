@@ -11,8 +11,11 @@ env:
   KOSLI_API_TOKEN: ${{ secrets.KOSLI_API_TOKEN }}
   KOSLI_DRY_RUN:   ${{ vars.KOSLI_DRY_RUN }}           # false
   KOSLI_DEBUG:     ${{ vars.KOSLI_DEBUG }}             # false
-  KOSLI_AWS_BETA:  aws-beta
-  KOSLI_AWS_PROD:  aws-prod
+
+  KOSLI_AWS_BETA:     aws-beta
+  KOSLI_AWS_BETA_TF:  aws-beta-terraform-drift-detection
+  KOSLI_AWS_PROD:     aws-prod
+  KOSLI_AWS_PROD_TF:  aws-prod-terraform-drift-detection
 
 jobs:
 
@@ -46,6 +49,7 @@ jobs:
       - name: Attach policies to environments
         run: |
           kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA_TF},${KOSLI_AWS_PROD_TF}"
           kosli attach-policy pull-request      --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
           kosli attach-policy trail-compliance-aws-beta --environment="${KOSLI_AWS_BETA}"
           kosli attach-policy trail-compliance-aws-prod --environment="${KOSLI_AWS_PROD}"
