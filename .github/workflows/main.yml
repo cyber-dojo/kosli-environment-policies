@@ -30,11 +30,8 @@ jobs:
 
       - name: Detach policies from environments
         run: |
-          kosli detach-policy live-snyk-scan-aws-beta --environment="${KOSLI_AWS_BETA}"
-          kosli detach-policy live-snyk-scan-aws-prod --environment="${KOSLI_AWS_PROD}"
-          kosli detach-policy build-process           --environment="${KOSLI_AWS_BETA}"
-          kosli detach-policy build-process           --environment="${KOSLI_AWS_PROD}"
-          kosli detach-policy trail-compliance        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
+          kosli detach-policy terraform-state-differ-prod --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}" || true
+          kosli detach-policy terraform-state-differ-beta --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}" || true
 
       - name: Create/Update Kosli Policies
         run: |
