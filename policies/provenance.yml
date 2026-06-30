@@ -4,5 +4,6 @@ artifacts:
   provenance:
     required: true
   attestations:
-    - type: decision
+    - if: ${{ flow.tags.kind == "build" }}
+      type: decision
       for_control: SDLC-CTRL-0002
