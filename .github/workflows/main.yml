@@ -33,11 +33,6 @@ jobs:
       #     kosli detach-policy terraform-state-differ-prod --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
       #     kosli detach-policy terraform-state-differ-beta --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
 
-      - name: Archive dead environments
-        run: |
-          kosli archive environment terraform-state-differ-beta || true
-          kosli archive environment terraform-state-differ-prod || true
-
       - name: Create/Update Kosli Policies
         run: |
           kosli create policy provenance           policies/provenance.yml
