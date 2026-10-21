@@ -16,6 +16,7 @@ env:
   KOSLI_AWS_BETA_TF:  aws-beta-terraform-drift-detection
   KOSLI_AWS_PROD:     aws-prod
   KOSLI_AWS_PROD_TF:  aws-prod-terraform-drift-detection
+  KOSLI_AWS_BETA_CLOUD_CAPTURE: 244531986313-eu-central-1-ecs-app
 
 jobs:
 
@@ -48,11 +49,11 @@ jobs:
 
       - name: Attach policies to environments
         run: |
-          kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
-          kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA_TF},${KOSLI_AWS_PROD_TF}"
-          kosli attach-policy pull-request      --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD}"
-          kosli attach-policy trail-compliance-aws-beta --environment="${KOSLI_AWS_BETA}"
+          kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD},${KOSLI_AWS_BETA_CLOUD_CAPTURE}"
+          kosli attach-policy provenance        --environment="${KOSLI_AWS_BETA_TF},${KOSLI_AWS_PROD_TF},${KOSLI_AWS_BETA_CLOUD_CAPTURE}"
+          kosli attach-policy pull-request      --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_PROD},${KOSLI_AWS_BETA_CLOUD_CAPTURE}"
+          kosli attach-policy trail-compliance-aws-beta --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_BETA_CLOUD_CAPTURE}"
           kosli attach-policy trail-compliance-aws-prod --environment="${KOSLI_AWS_PROD}"
-          kosli attach-policy snyk-scan-aws-beta   --environment="${KOSLI_AWS_BETA}"
+          kosli attach-policy snyk-scan-aws-beta   --environment="${KOSLI_AWS_BETA},${KOSLI_AWS_BETA_CLOUD_CAPTURE}"
           kosli attach-policy snyk-scan-aws-prod   --environment="${KOSLI_AWS_PROD}"
           kosli attach-policy production-promotion --environment="${KOSLI_AWS_PROD}"
